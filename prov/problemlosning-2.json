@@ -1,0 +1,75 @@
+{
+  "title": "Problemlösning del 2",
+  "questions": [
+    {
+      "question": "Två tal har summan 28. Det ena är 4 större än det andra. Vilket är det mindre talet?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "Sätt det mindre talet = x, då är det större = x + 4. Ekvation: x + (x + 4) = 28 → 2x = 24 → x = 12."
+    },
+    {
+      "question": "Lina kan tre gånger så många låtar utantill som Tim. Tillsammans kan de 48 låtar. Hur många kan Tim?",
+      "answer": [
+        "12"
+      ],
+      "explanation": "Sätt Tim = x, då är Lina = 3x. Ekvation: x + 3x = 48 → 4x = 48 → x = 12."
+    },
+    {
+      "question": "En penna kostar 8 kr mer än ett suddgummi. Tillsammans kostar de 26 kr. Vad kostar suddgummit? (kr)",
+      "answer": [
+        "9"
+      ],
+      "explanation": "Sätt suddgummi = x, då är penna = x + 8. Ekvation: x + (x + 8) = 26 → 2x = 18 → x = 9 kr."
+    },
+    {
+      "question": "Saras mamma är fyra gånger så gammal som Sara. Tillsammans är de 50 år. Hur gammal är Sara?",
+      "answer": [
+        "10"
+      ],
+      "explanation": "Sätt Sara = x, då är mamma = 4x. Ekvation: x + 4x = 50 → 5x = 50 → x = 10."
+    },
+    {
+      "question": "I en rektangel är ena sidan 5 cm längre än den andra. Omkretsen är 38 cm. Hur lång är den korta sidan? (cm)",
+      "answer": [
+        "7"
+      ],
+      "explanation": "Sätt korta sidan = x, då är långa = x + 5. Omkrets: 2x + 2(x + 5) = 38 → 4x + 10 = 38 → 4x = 28 → x = 7 cm."
+    },
+    {
+      "question": "Tre tal har summan 54. Det andra är 6 större än det första, det tredje är dubbelt så stort som det första. Vilket är det mittersta talet?",
+      "answer": [
+        "18"
+      ],
+      "explanation": "Sätt första = x. Andra = x + 6, tredje = 2x. Ekvation: x + (x + 6) + 2x = 54 → 4x + 6 = 54 → x = 12. Mittersta = 12 + 6 = 18."
+    },
+    {
+      "question": "Till en fest köper Mia 4 läsk för 22 kr styck och 6 godispåsar. Allt kostar 196 kr. Vad kostar en godispåse? (kr)",
+      "answer": [
+        "18"
+      ],
+      "explanation": "Sätt en godispåse = x. Ekvation: 4·22 + 6x = 196 → 88 + 6x = 196 → 6x = 108 → x = 18 kr."
+    },
+    {
+      "question": "På en konsert var en vuxenbiljett 60 kr dyrare än en barnbiljett. 80 vuxna och 120 barn kom, och konsertarrangören fick in totalt 26 800 kr. Hur mycket kostade en barnbiljett? (kr)",
+      "answer": [
+        "110"
+      ],
+      "explanation": "Sätt barnbiljett = x, då är vuxen = x + 60. Ekvation: 80(x + 60) + 120x = 26 800 → 80x + 4 800 + 120x = 26 800 → 200x = 22 000 → x = 110 kr."
+    },
+    {
+      "question": "Priset på en cykel halveras och minskar sedan med ytterligare 150 kr. Det nya priset är 850 kr. Vad kostade cykeln från början? (kr)",
+      "answer": [
+        "2000"
+      ],
+      "explanation": "Sätt ursprungspris = x. Ekvation: x/2 − 150 = 850 → x/2 = 1000 → x = 2 000 kr."
+    },
+    {
+      "question": "En triangel har vinklarna x, 2x + 10° och 3x + 20°. Hur stor är den största vinkeln? (grader)",
+      "answer": [
+        "95"
+      ],
+      "explanation": "Vinkelsumman är 180°: x + (2x + 10) + (3x + 20) = 180 → 6x + 30 = 180 → 6x = 150 → x = 25°. Vinklarna blir 25°, 60° och 95°. Den största är 95°."
+    }
+  ]
+}

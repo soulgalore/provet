@@ -19,8 +19,14 @@
   },
   {
     "file": "problemlosning.json",
-    "title": "Problemlösning",
+    "title": "Problemlösning del 1",
     "description": "Lös vardagsproblem med ekvationer",
+    "questions": 10
+  },
+  {
+    "file": "problemlosning-2.json",
+    "title": "Problemlösning del 2",
+    "description": "Fler problem — enklare och svårare",
     "questions": 10
   }
 ]
