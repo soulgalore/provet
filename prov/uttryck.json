@@ -1,0 +1,55 @@
+{
+  "title": "Uttryck",
+  "questions": [
+    {
+      "question": "Skriv ett uttryck för: dividera ett okänt tal x med 6.",
+      "answer": ["x/6"],
+      "explanation": "Att dividera x med 6 skrivs x/6 (eller x÷6)."
+    },
+    {
+      "question": "Skriv ett uttryck för: multiplicera ett okänt tal x med 4 och subtrahera produkten med 7.",
+      "answer": ["4x-7"],
+      "explanation": "Först produkten 4·x = 4x, sen minus 7: 4x − 7."
+    },
+    {
+      "question": "Skriv ett uttryck för: subtrahera ett okänt tal x med 9 och addera 5 till differensen.",
+      "answer": ["x-9+5", "x-4"],
+      "explanation": "Först differensen x − 9, sen plus 5. Det kan också skrivas x − 4."
+    },
+    {
+      "question": "I en godispåse finns r röda och b blå godisbitar. Vad betyder uttrycket r = 3b? (svara: 'tre gånger så många röda som blå' eller liknande — eller skriv 3b)",
+      "answer": ["3b"],
+      "explanation": "r = 3b betyder att antalet röda är tre gånger antalet blå."
+    },
+    {
+      "question": "Om x år kommer antalet invånare att vara 8 200 000 + 60 000x. Hur många invånare om 4 år? (sätt in x = 4)",
+      "answer": ["8440000"],
+      "explanation": "60 000 · 4 = 240 000. 8 200 000 + 240 000 = 8 440 000."
+    },
+    {
+      "question": "Tina startar ugnen. Temperaturen kan beräknas med 25 + 12t (°C), där t är minuter. Vad är temperaturen efter t = 10 minuter?",
+      "answer": ["145"],
+      "explanation": "25 + 12·10 = 25 + 120 = 145 °C."
+    },
+    {
+      "question": "Förenkla: 2a + 5a + 3",
+      "answer": ["7a+3", "3+7a"],
+      "explanation": "Lägg ihop a-termerna: 2a + 5a = 7a. Konstanten 3 står kvar."
+    },
+    {
+      "question": "Förenkla: 8x + 3y − 2x + y",
+      "answer": ["6x+4y", "4y+6x"],
+      "explanation": "x-termer: 8x − 2x = 6x. y-termer: 3y + y = 4y."
+    },
+    {
+      "question": "Förenkla: 10x/2 + 4x − 3x",
+      "answer": ["6x"],
+      "explanation": "10x/2 = 5x. Sen 5x + 4x − 3x = 6x."
+    },
+    {
+      "question": "I en pyramid är varje fält summan av de två under. Översta fältet är tomt. Nedre raden: 2a, 3a+b, a−b. Vad står i mellersta raden, vänstra fältet?",
+      "answer": ["5a+b", "b+5a"],
+      "explanation": "Vänstra fältet i mellersta raden = 2a + (3a + b) = 5a + b."
+    }
+  ]
+}

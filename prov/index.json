@@ -1,0 +1,26 @@
+[
+  {
+    "file": "uttryck.json",
+    "title": "Uttryck",
+    "description": "Bygga, tolka och förenkla algebraiska uttryck",
+    "questions": 10
+  },
+  {
+    "file": "ekvationer.json",
+    "title": "Ekvationer",
+    "description": "Lös ekvationer av olika slag",
+    "questions": 11
+  },
+  {
+    "file": "talfoljder.json",
+    "title": "Talföljder och mönster",
+    "description": "Hitta nästa tal och formler för mönster",
+    "questions": 10
+  },
+  {
+    "file": "problemlosning.json",
+    "title": "Problemlösning",
+    "description": "Lös vardagsproblem med ekvationer",
+    "questions": 10
+  }
+]

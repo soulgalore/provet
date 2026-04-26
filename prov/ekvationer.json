@@ -1,0 +1,60 @@
+{
+  "title": "Ekvationer",
+  "questions": [
+    {
+      "question": "Lös ekvationen: x + 9 = 17",
+      "answer": ["8", "x=8"],
+      "explanation": "Subtrahera 9 från båda sidor: x = 17 − 9 = 8."
+    },
+    {
+      "question": "Lös ekvationen: 2x + 6 = 20",
+      "answer": ["7", "x=7"],
+      "explanation": "Subtrahera 6: 2x = 14. Dividera med 2: x = 7."
+    },
+    {
+      "question": "Lös ekvationen: 5x − 8 = 27",
+      "answer": ["7", "x=7"],
+      "explanation": "Addera 8: 5x = 35. Dividera med 5: x = 7."
+    },
+    {
+      "question": "Lös ekvationen: 40 = 8x",
+      "answer": ["5", "x=5"],
+      "explanation": "Dividera båda sidor med 8: x = 40/8 = 5."
+    },
+    {
+      "question": "Lös ekvationen: x/4 = 9",
+      "answer": ["36", "x=36"],
+      "explanation": "Multiplicera båda sidor med 4: x = 36."
+    },
+    {
+      "question": "Lös ekvationen: x/3 + 5 = 12",
+      "answer": ["21", "x=21"],
+      "explanation": "Subtrahera 5: x/3 = 7. Multiplicera med 3: x = 21."
+    },
+    {
+      "question": "Lös ekvationen: 6x/2 = 18",
+      "answer": ["6", "x=6"],
+      "explanation": "6x/2 = 3x, alltså 3x = 18, så x = 6."
+    },
+    {
+      "question": "Lös ekvationen: 9x − 14 = 4x + 21",
+      "answer": ["7", "x=7"],
+      "explanation": "Flytta över: 9x − 4x = 21 + 14, alltså 5x = 35, x = 7."
+    },
+    {
+      "question": "Lös ekvationen: 8x − 30 = 22 − 5x",
+      "answer": ["4", "x=4"],
+      "explanation": "Flytta över: 8x + 5x = 22 + 30, alltså 13x = 52, x = 4."
+    },
+    {
+      "question": "Lös ekvationen: 3,5x = 14",
+      "answer": ["4", "x=4"],
+      "explanation": "Dividera med 3,5: x = 14/3,5 = 4."
+    },
+    {
+      "question": "Om du vet att 4x + 7 = 19, vad är då (4x + 7)/3?",
+      "answer": ["19/3", "6,333...", "ca 6,33"],
+      "explanation": "Eftersom 4x + 7 = 19 är (4x + 7)/3 = 19/3 ≈ 6,33. (Skriv 19/3)"
+    }
+  ]
+}

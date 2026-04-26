@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mattekvist</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --ink: #1f2933;
+    --muted: #6b7280;
+    --line: #e5e0d6;
+    --accent: #2d6a4f;
+    --accent-soft: #d8efe2;
+    --error: #b4341e;
+    --error-soft: #fbe4de;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Charter', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  header {
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .prov-list { display: flex; flex-direction: column; gap: 10px; }
+  .prov-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    transition: border-color .15s ease, transform .05s ease;
+  }
+  .prov-item:hover { border-color: var(--accent); }
+  .prov-item:active { transform: translateY(1px); }
+  .prov-item .meta { color: var(--muted); font-size: 14px; }
+  .question-num {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .question {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 0 24px;
+    line-height: 1.3;
+  }
+  .answer-row { display: flex; gap: 10px; margin-bottom: 16px; }
+  input[type="text"] {
+    flex: 1;
+    font: inherit;
+    font-size: 22px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s;
+  }
+  input[type="text"]:focus { border-color: var(--accent); }
+  input[type="text"]:disabled { opacity: 0.7; }
+  button.primary {
+    font: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 14px 22px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .15s, transform .05s;
+  }
+  button.primary:hover { background: #000; }
+  button.primary:active { transform: translateY(1px); }
+  button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.ghost {
+    font: inherit; font-size: 15px;
+    background: transparent; border: none; color: var(--muted);
+    cursor: pointer; padding: 8px 0;
+  }
+  button.ghost:hover { color: var(--ink); }
+  .feedback {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .feedback.correct {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .feedback.wrong {
+    background: var(--error-soft);
+    color: var(--error);
+  }
+  .feedback strong { font-weight: 600; }
+  .feedback .explanation {
+    margin-top: 8px;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .progress {
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .progress-bar {
+    height: 100%;
+    background: var(--accent);
+    transition: width .3s ease;
+  }
+  .summary-stat {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .summary-stat .score {
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .summary-stat .label {
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .review-list { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .review-item {
+    padding: 14px 16px;
+    background: var(--bg);
+    border-radius: 10px;
+    border-left: 3px solid var(--error);
+  }
+  .review-item.ok { border-left-color: var(--accent); }
+  .review-q { font-weight: 500; }
+  .review-meta { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .empty { color: var(--muted); text-align: center; padding: 40px 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Mattekvist</h1>
+      <p class="subtitle">Träna matte med övningsprov</p>
+    </header>
+    <main id="app"></main>
+  </div>
+
+<script>
+'use strict';
+
+const app = document.getElementById('app');
+const state = {
+  view: 'list',        // 'list' | 'quiz' | 'summary'
+  provs: [],           // index entries
+  current: null,       // loaded prov
+  index: 0,
+  answers: [],         // {userAnswer, correct}
+  feedback: null,      // {correct, explanation, expected} | null
+};
+
+// --- Loading ---
+
+async function loadIndex() {
+  try {
+    const res = await fetch('prov/index.json');
+    if (!res.ok) throw new Error('index.json saknas');
+    state.provs = await res.json();
+  } catch (err) {
+    state.provs = [];
+    state.loadError = err.message;
+  }
+  render();
+}
+
+async function startProv(file) {
+  const res = await fetch('prov/' + file);
+  state.current = await res.json();
+  state.index = 0;
+  state.answers = [];
+  state.feedback = null;
+  state.view = 'quiz';
+  render();
+  setTimeout(() => document.getElementById('answer-input')?.focus(), 50);
+}
+
+// --- Answer checking ---
+
+function normalize(s) {
+  return String(s).trim().toLowerCase()
+    .replace(/,/g, '.')
+    .replace(/[·*×]/g, '')   // 3·a, 3*a, 3a → 3a
+    .replace(/\s+/g, '');
+}
+
+// Sort terms in a simple sum so "3a+2b" matches "2b+3a"
+function canonicalSum(s) {
+  if (!/^[-+]?[\w./]+(\+[\w./]+)+$/.test(s)) return s;
+  return s.split('+').map(t => t.trim()).sort().join('+');
+}
+
+function checkAnswer(userAnswer, correctAnswer) {
+  const candidates = Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer];
+  const u = normalize(userAnswer);
+  const uSum = canonicalSum(u);
+  for (const c of candidates) {
+    const cn = normalize(c);
+    if (u === cn) return true;
+    if (canonicalSum(cn) === uSum) return true;
+    const un = parseFloat(u), cnum = parseFloat(cn);
+    if (!isNaN(un) && !isNaN(cnum) && u === String(un) && cn === String(cnum)
+        && Math.abs(un - cnum) < 1e-9) return true;
+  }
+  return false;
+}
+
+function submitAnswer() {
+  const input = document.getElementById('answer-input');
+  const userAnswer = input.value;
+  if (!userAnswer.trim()) return;
+  const q = state.current.questions[state.index];
+  const correct = checkAnswer(userAnswer, q.answer);
+  state.answers.push({ userAnswer, correct });
+  state.feedback = {
+    correct,
+    explanation: q.explanation || '',
+    expected: Array.isArray(q.answer) ? q.answer[0] : q.answer,
+  };
+  render();
+}
+
+function nextQuestion() {
+  state.feedback = null;
+  state.index++;
+  if (state.index >= state.current.questions.length) {
+    state.view = 'summary';
+  }
+  render();
+  setTimeout(() => document.getElementById('answer-input')?.focus(), 50);
+}
+
+function backToList() {
+  state.view = 'list';
+  state.current = null;
+  state.index = 0;
+  state.answers = [];
+  state.feedback = null;
+  render();
+}
+
+// --- Rendering ---
+
+function render() {
+  if (state.view === 'list') return renderList();
+  if (state.view === 'quiz') return renderQuiz();
+  if (state.view === 'summary') return renderSummary();
+}
+
+function renderList() {
+  if (state.loadError) {
+    app.innerHTML = `<div class="card"><p class="empty">Kunde inte ladda prov: ${escapeHtml(state.loadError)}.<br>Se till att <code>prov/index.json</code> finns.</p></div>`;
+    return;
+  }
+  if (state.provs.length === 0) {
+    app.innerHTML = `<div class="card"><p class="empty">Inga prov än. Lägg till i <code>prov/</code>-mappen.</p></div>`;
+    return;
+  }
+  const items = state.provs.map(p => `
+    <button class="prov-item" data-file="${escapeHtml(p.file)}">
+      <span>
+        <strong>${escapeHtml(p.title)}</strong>
+        ${p.description ? `<div class="meta">${escapeHtml(p.description)}</div>` : ''}
+      </span>
+      <span class="meta">${p.questions ?? '?'} tal →</span>
+    </button>
+  `).join('');
+  app.innerHTML = `<div class="prov-list">${items}</div>`;
+  app.querySelectorAll('.prov-item').forEach(el => {
+    el.addEventListener('click', () => startProv(el.dataset.file));
+  });
+}
+
+function renderQuiz() {
+  const total = state.current.questions.length;
+  const q = state.current.questions[state.index];
+  const fb = state.feedback;
+  const progress = ((state.index + (fb ? 1 : 0)) / total) * 100;
+
+  app.innerHTML = `
+    <div class="progress"><div class="progress-bar" style="width:${progress}%"></div></div>
+    <div class="card">
+      <div class="question-num">Tal ${state.index + 1} av ${total}</div>
+      <p class="question">${escapeHtml(q.question)}</p>
+      <div class="answer-row">
+        <input type="text" id="answer-input" inputmode="decimal" autocomplete="off"
+               placeholder="Ditt svar" ${fb ? 'disabled' : ''}>
+        <button class="primary" id="submit-btn" ${fb ? 'style="display:none"' : ''}>Svara</button>
+        <button class="primary" id="next-btn" ${fb ? '' : 'style="display:none"'}>
+          ${state.index + 1 === total ? 'Visa resultat' : 'Nästa'}
+        </button>
+      </div>
+      ${fb ? renderFeedback(fb) : ''}
+    </div>
+    <div style="margin-top:16px;text-align:center">
+      <button class="ghost" id="abort-btn">← Avbryt</button>
+    </div>
+  `;
+
+  const input = document.getElementById('answer-input');
+  if (fb && state.answers[state.answers.length - 1]) {
+    input.value = state.answers[state.answers.length - 1].userAnswer;
+  }
+  document.getElementById('submit-btn').addEventListener('click', submitAnswer);
+  document.getElementById('next-btn').addEventListener('click', nextQuestion);
+  document.getElementById('abort-btn').addEventListener('click', backToList);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      if (fb) nextQuestion(); else submitAnswer();
+    }
+  });
+}
+
+function renderFeedback(fb) {
+  if (fb.correct) {
+    return `<div class="feedback correct"><strong>Rätt!</strong></div>`;
+  }
+  return `
+    <div class="feedback wrong">
+      <strong>Inte riktigt.</strong> Rätt svar är <strong>${escapeHtml(String(fb.expected))}</strong>.
+      ${fb.explanation ? `<div class="explanation">${escapeHtml(fb.explanation)}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderSummary() {
+  const total = state.current.questions.length;
+  const correct = state.answers.filter(a => a.correct).length;
+  const wrongItems = state.current.questions.map((q, i) => ({ q, a: state.answers[i] }))
+    .filter(x => !x.a.correct);
+
+  app.innerHTML = `
+    <div class="card">
+      <div class="summary-stat">
+        <div class="score">${correct} / ${total}</div>
+        <div class="label">${correct === total ? 'Allt rätt! 🌟' : 'Bra jobbat!'}</div>
+      </div>
+      ${wrongItems.length > 0 ? `
+        <div style="margin-top:24px">
+          <strong>Att repetera:</strong>
+          <div class="review-list">
+            ${wrongItems.map(({q, a}) => `
+              <div class="review-item">
+                <div class="review-q">${escapeHtml(q.question)} = ${escapeHtml(String(Array.isArray(q.answer) ? q.answer[0] : q.answer))}</div>
+                <div class="review-meta">Ditt svar: ${escapeHtml(a.userAnswer)}${q.explanation ? ' · ' + escapeHtml(q.explanation) : ''}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+      <div style="margin-top:24px;display:flex;gap:10px">
+        <button class="primary" id="retry-btn">Gör om</button>
+        <button class="ghost" id="back-btn">← Till provlistan</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('retry-btn').addEventListener('click', () => {
+    state.index = 0;
+    state.answers = [];
+    state.feedback = null;
+    state.view = 'quiz';
+    render();
+  });
+  document.getElementById('back-btn').addEventListener('click', backToList);
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+loadIndex();
+</script>
+</body>
+</html>

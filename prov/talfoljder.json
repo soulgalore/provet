@@ -1,0 +1,55 @@
+{
+  "title": "Talföljder och mönster",
+  "questions": [
+    {
+      "question": "Vilket tal saknas? 7, 12, __, 22, 27",
+      "answer": ["17"],
+      "explanation": "Talföljden ökar med 5 varje steg: 12 + 5 = 17."
+    },
+    {
+      "question": "Vilket är det första saknade talet? __, 25, 30, __, 40, 45",
+      "answer": ["20"],
+      "explanation": "Talföljden ökar med 5: 25 − 5 = 20."
+    },
+    {
+      "question": "Talföljden 4, 9, 14, 19, ... Vilket är nästa tal?",
+      "answer": ["24"],
+      "explanation": "Ökar med 5: 19 + 5 = 24."
+    },
+    {
+      "question": "Talföljden 4, 9, 14, 19, ... Skriv en formel för talet a på plats nummer n. (skriv som t.ex. 5n-1)",
+      "answer": ["5n-1"],
+      "explanation": "Differensen är 5 (alltså 5n) och första talet (n=1) ska bli 4: 5·1 − 1 = 4. Formel: a = 5n − 1."
+    },
+    {
+      "question": "Talföljden 3, 7, 11, 15, ... Vilket är talet på plats n = 10?",
+      "answer": ["39"],
+      "explanation": "Formel: a = 4n − 1. För n = 10: 4·10 − 1 = 39."
+    },
+    {
+      "question": "Mönstret av punkter ser ut så här: figur 1 har 4 punkter, figur 2 har 7, figur 3 har 10. Vilken formel ger antalet punkter P i figur n? (skriv som t.ex. 3n+1)",
+      "answer": ["3n+1", "1+3n"],
+      "explanation": "Skillnaden är 3, alltså 3n. För n = 1 ska det bli 4: 3·1 + 1 = 4. Formel: P = 3n + 1."
+    },
+    {
+      "question": "Stickor bildar trianglar i rad: figur 1 har 3 stickor, figur 2 har 5, figur 3 har 7. Hur många stickor i figur 6?",
+      "answer": ["13"],
+      "explanation": "Formel: S = 2n + 1. För n = 6: 2·6 + 1 = 13."
+    },
+    {
+      "question": "Talföljden 2, 6, 10, 14, 18, ... Vilket är nästa tal?",
+      "answer": ["22"],
+      "explanation": "Ökar med 4: 18 + 4 = 22."
+    },
+    {
+      "question": "Talföljden 2, 6, 10, 14, ... Skriv en formel för talet T på plats n.",
+      "answer": ["4n-2"],
+      "explanation": "Differensen är 4. För n = 1 ska det bli 2: 4·1 − 2 = 2. Formel: T = 4n − 2."
+    },
+    {
+      "question": "Två tal har summan 50. Det ena är 12 större än det andra. Vilket är det mindre talet?",
+      "answer": ["19"],
+      "explanation": "Sätt det mindre till x, det större x + 12. x + (x + 12) = 50 → 2x = 38 → x = 19."
+    }
+  ]
+}
