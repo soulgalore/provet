@@ -199,7 +199,7 @@
   <div class="wrap">
     <header>
       <h1>Mattekvist</h1>
-      <p class="subtitle">Träna matte med övningsprov</p>
+      <p class="subtitle" id="subtitle">Träna matte med övningsprov</p>
     </header>
     <main id="app"></main>
   </div>
@@ -209,9 +209,11 @@
 
 const app = document.getElementById('app');
 const state = {
-  view: 'list',        // 'list' | 'quiz' | 'summary'
+  view: 'list',        // 'name' | 'list' | 'quiz' | 'summary'
+  name: null,          // chosen user name
   provs: [],           // index entries
   cheers: ['Rätt!'],   // cheer messages, loaded from cheers.json
+  encouragements: ['Försök igen!'], // for wrong answers, loaded from encouragements.json
   current: null,       // loaded prov
   index: 0,
   streak: 0,           // consecutive correct answers
@@ -219,9 +221,18 @@ const state = {
   feedback: null,      // {correct, explanation, expected} | null
 };
 
+const NAMES = ['Isak', 'Sally'];
+
 // --- Loading ---
 
 async function loadIndex() {
+  // Restore saved name (if any)
+  try {
+    const saved = localStorage.getItem('provet.name');
+    if (saved && NAMES.includes(saved)) state.name = saved;
+  } catch (_) { /* localStorage unavailable, that's fine */ }
+  if (!state.name) state.view = 'name';
+
   try {
     const res = await fetch('prov/index.json');
     if (!res.ok) throw new Error('index.json saknas');
@@ -234,7 +245,29 @@ async function loadIndex() {
     const res = await fetch('prov/cheers.json');
     if (res.ok) state.cheers = await res.json();
   } catch (_) { /* fallback to default */ }
+  try {
+    const res = await fetch('prov/encouragements.json');
+    if (res.ok) state.encouragements = await res.json();
+  } catch (_) { /* fallback to default */ }
   render();
+}
+
+function chooseName(name) {
+  state.name = name;
+  try { localStorage.setItem('provet.name', name); } catch (_) { /* ignore */ }
+  state.view = 'list';
+  render();
+}
+
+function changeName() {
+  state.name = null;
+  try { localStorage.removeItem('provet.name'); } catch (_) { /* ignore */ }
+  state.view = 'name';
+  render();
+}
+
+function personalize(template) {
+  return String(template).replace(/\{name\}/g, state.name || '');
 }
 
 async function startProv(file) {
@@ -302,7 +335,9 @@ function submitAnswer() {
     correct,
     explanation: q.explanation || '',
     expected: Array.isArray(q.answer) ? q.answer[0] : q.answer,
-    cheer: correct ? state.cheers[Math.floor(Math.random() * state.cheers.length)] : null,
+    cheer: correct
+      ? state.cheers[Math.floor(Math.random() * state.cheers.length)]
+      : state.encouragements[Math.floor(Math.random() * state.encouragements.length)],
   };
   render();
 }
@@ -329,9 +364,36 @@ function backToList() {
 // --- Rendering ---
 
 function render() {
+  // Update subtitle with name (if set)
+  const sub = document.getElementById('subtitle');
+  if (sub) {
+    if (state.name) {
+      sub.innerHTML = `Hej, <strong>${escapeHtml(state.name)}</strong>! <a href="#" id="change-name" style="color:var(--muted);margin-left:8px;font-size:13px">(byt)</a>`;
+      const link = document.getElementById('change-name');
+      if (link) link.addEventListener('click', (e) => { e.preventDefault(); changeName(); });
+    } else {
+      sub.textContent = 'Träna matte med övningsprov';
+    }
+  }
+  if (state.view === 'name') return renderName();
   if (state.view === 'list') return renderList();
   if (state.view === 'quiz') return renderQuiz();
   if (state.view === 'summary') return renderSummary();
+}
+
+function renderName() {
+  app.innerHTML = `
+    <div class="card">
+      <h2 style="margin-top:0">Vem är du?</h2>
+      <p style="color:var(--muted);margin-top:0">Välj ditt namn för att börja.</p>
+      <div class="prov-list" style="margin-top:20px">
+        ${NAMES.map(n => `<button class="prov-item" data-name="${escapeHtml(n)}"><strong>${escapeHtml(n)}</strong></button>`).join('')}
+      </div>
+    </div>
+  `;
+  app.querySelectorAll('.prov-item').forEach(el => {
+    el.addEventListener('click', () => chooseName(el.dataset.name));
+  });
 }
 
 function renderList() {
@@ -400,11 +462,12 @@ function renderQuiz() {
 
 function renderFeedback(fb) {
   if (fb.correct) {
-    return `<div class="feedback correct"><strong>${escapeHtml(fb.cheer || 'Rätt!')}</strong></div>`;
+    return `<div class="feedback correct"><strong>${escapeHtml(personalize(fb.cheer || 'Rätt!'))}</strong></div>`;
   }
   return `
     <div class="feedback wrong">
-      <strong>Inte riktigt.</strong> Rätt svar är <strong>${escapeHtml(String(fb.expected))}</strong>.
+      <strong>${escapeHtml(personalize(fb.cheer || 'Inte riktigt.'))}</strong>
+      Rätt svar är <strong>${escapeHtml(String(fb.expected))}</strong>.
       ${fb.explanation ? `<div class="explanation">${escapeHtml(fb.explanation)}</div>` : ''}
     </div>
   `;
@@ -420,7 +483,7 @@ function renderSummary() {
     <div class="card">
       <div class="summary-stat">
         <div class="score">${correct} / ${total}</div>
-        <div class="label">${correct === total ? 'Allt rätt! 🌟' : 'Bra jobbat!'}</div>
+        <div class="label">${correct === total ? `Allt rätt, ${escapeHtml(state.name || '')}! 🌟` : `Bra jobbat, ${escapeHtml(state.name || '')}!`}</div>
       </div>
       ${wrongItems.length > 0 ? `
         <div style="margin-top:24px">
