@@ -2,6 +2,11 @@
   "title": "Hög höjd",
   "questions": [
     {
+      "question": "Lös ekvationen: 2x + 5 = 17",
+      "answer": ["6"],
+      "explanation": "Subtrahera 5: 2x = 12. Dividera med 2: x = 6."
+    },
+    {
       "question": "En kamera kostade x kr. Priset sänktes med 25 %. Skriv ett uttryck för rabatten i kronor.",
       "answer": ["0,25x"],
       "explanation": "25 % = 0,25. Rabatten = 0,25 · x = 0,25x. (Samma sak som x/4.)"
@@ -70,11 +75,6 @@
       "question": "En vara kostade x kr. Priset halverades. Skriv ett uttryck för det nya priset.",
       "answer": ["x/2"],
       "explanation": "Halvering betyder dela med 2. Nytt pris = x/2. (Samma som 0,5x.)"
-    },
-    {
-      "question": "Lös ekvationen: 5x − 12 = 2x + 18",
-      "answer": ["10"],
-      "explanation": "Flytta över: 5x − 2x = 18 + 12 → 3x = 30 → x = 10."
     },
     {
       "question": "Talföljden 2, 5, 8, 11, ... Skriv en formel för talet på plats nummer n.",

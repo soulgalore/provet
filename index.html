@@ -176,6 +176,23 @@
   .review-q { font-weight: 500; }
   .review-meta { font-size: 14px; color: var(--muted); margin-top: 4px; }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
+
+  .firework-particle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: firework-burst 1s ease-out forwards;
+  }
+  @keyframes firework-burst {
+    0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .firework-particle { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -197,6 +214,7 @@ const state = {
   cheers: ['Rätt!'],   // cheer messages, loaded from cheers.json
   current: null,       // loaded prov
   index: 0,
+  streak: 0,           // consecutive correct answers
   answers: [],         // {userAnswer, correct}
   feedback: null,      // {correct, explanation, expected} | null
 };
@@ -220,10 +238,17 @@ async function loadIndex() {
 }
 
 async function startProv(file) {
-  const res = await fetch('prov/' + file);
-  state.current = await res.json();
+  try {
+    const res = await fetch('prov/' + file);
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' för prov/' + file);
+    state.current = await res.json();
+  } catch (err) {
+    alert('Kunde inte ladda provet: ' + err.message);
+    return;
+  }
   state.index = 0;
   state.answers = [];
+  state.streak = 0;
   state.feedback = null;
   state.view = 'quiz';
   render();
@@ -267,6 +292,12 @@ function submitAnswer() {
   const q = state.current.questions[state.index];
   const correct = checkAnswer(userAnswer, q.answer);
   state.answers.push({ userAnswer, correct });
+  if (correct) {
+    state.streak++;
+    launchFireworks(state.streak);
+  } else {
+    state.streak = 0;
+  }
   state.feedback = {
     correct,
     explanation: q.explanation || '',
@@ -424,6 +455,35 @@ function escapeHtml(s) {
   return String(s)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// Launch celebratory fireworks. Number of bursts scales with streak.
+function launchFireworks(streak) {
+  const bursts = Math.min(1 + Math.floor(streak / 2), 6);
+  const colors = ['#e63946', '#f1a208', '#2d6a4f', '#1d4ed8', '#c026d3', '#ea580c'];
+  for (let b = 0; b < bursts; b++) {
+    setTimeout(() => {
+      const cx = 15 + Math.random() * 70; // viewport %
+      const cy = 20 + Math.random() * 50;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const particles = 18 + streak * 2;
+      for (let i = 0; i < particles; i++) {
+        const angle = (Math.PI * 2 * i) / particles;
+        const dist = 80 + Math.random() * 60;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+        const p = document.createElement('div');
+        p.className = 'firework-particle';
+        p.style.left = cx + '%';
+        p.style.top = cy + '%';
+        p.style.background = color;
+        p.style.setProperty('--dx', dx + 'px');
+        p.style.setProperty('--dy', dy + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1100);
+      }
+    }, b * 180);
+  }
 }
 
 loadIndex();
