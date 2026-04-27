@@ -1,0 +1,105 @@
+{
+  "title": "Hög höjd",
+  "questions": [
+    {
+      "question": "En kamera kostade 320 kr. Priset sänktes med 25 %. Hur stor var rabatten? (kr)",
+      "answer": ["80"],
+      "explanation": "25 % av 320 = 0,25 · 320 = 80 kr. (Uttrycket 0,25·x ger rabatten när x är priset.)"
+    },
+    {
+      "question": "I en rätvinklig triangel är den ena vinkeln 1,5 gånger så stor som den minsta vinkeln. Hur stor är den minsta vinkeln? (grader)",
+      "answer": ["36"],
+      "explanation": "Sätt minsta = x. Vinklar: x + 1,5x + 90 = 180 → 2,5x = 90 → x = 36°. Vinklarna är 36°, 54°, 90°."
+    },
+    {
+      "question": "Summan av tre på varandra följande heltal är 144. Vilket är det mittersta talet?",
+      "answer": ["48"],
+      "explanation": "Sätt mittersta = x. Talen: (x − 1) + x + (x + 1) = 144 → 3x = 144 → x = 48. Talen är 47, 48, 49."
+    },
+    {
+      "question": "Summan av tre på varandra följande udda tal är 81. Vilket är det mittersta talet?",
+      "answer": ["27"],
+      "explanation": "Sätt mittersta = x. Då är talen x − 2, x och x + 2. Summa: 3x = 81 → x = 27. Talen: 25, 27, 29."
+    },
+    {
+      "question": "Summan av tre på varandra följande jämna tal är 192. Vilket är det största talet?",
+      "answer": ["66"],
+      "explanation": "Sätt mittersta = x. (x − 2) + x + (x + 2) = 192 → 3x = 192 → x = 64. Talen 62, 64, 66. Största = 66."
+    },
+    {
+      "question": "Albin köper en bukett med 17 blommor — tulpaner och rosor. En tulpan kostar 7 kr, en ros 12 kr. Buketten kostar 174 kr. Hur många tulpaner var det?",
+      "answer": ["6"],
+      "explanation": "Sätt antal tulpaner = x, då är antal rosor = 17 − x. Ekvation: 7x + 12(17 − x) = 174 → 7x + 204 − 12x = 174 → −5x = −30 → x = 6. Det var 6 tulpaner och 11 rosor."
+    },
+    {
+      "question": "Cashewnötter kostar 16 kr/hg och pistagenötter 13 kr/hg. Emma köper totalt 1 kg (= 10 hg) och betalar 152,50 kr. Hur många hg cashewnötter köpte hon?",
+      "answer": ["7,5", "7.5"],
+      "explanation": "Sätt cashew = x hg, pistage = (10 − x) hg. Ekvation: 16x + 13(10 − x) = 152,50 → 3x + 130 = 152,50 → 3x = 22,5 → x = 7,5 hg cashew och 2,5 hg pistage."
+    },
+    {
+      "question": "I en klass med 20 elever ska alla skaka hand med varje annan elev exakt en gång. Hur många handskakningar blir det totalt?",
+      "answer": ["190"],
+      "explanation": "Varje par skakar hand en gång. Antal par = n(n − 1)/2 = 20·19/2 = 190."
+    },
+    {
+      "question": "Om det istället hade varit 30 elever i klassen, hur många handskakningar hade det blivit?",
+      "answer": ["435"],
+      "explanation": "Samma formel: n(n − 1)/2 = 30·29/2 = 870/2 = 435."
+    },
+    {
+      "question": "En hamburgare och två korvar kostar 80 kr. En hamburgare och en korv kostar 60 kr. Vad kostar en korv? (kr)",
+      "answer": ["20"],
+      "explanation": "Sätt hamburgare = h, korv = k. h + 2k = 80 och h + k = 60. Subtrahera: k = 80 − 60 = 20 kr."
+    },
+    {
+      "question": "En cirkels omkrets är O = 2·π·r där π = 3,14. Beräkna omkretsen när radien är 5 cm. (cm)",
+      "answer": ["31,4", "31.4"],
+      "explanation": "O = 2 · 3,14 · 5 = 31,4 cm."
+    },
+    {
+      "question": "I en rektangel är basen tre gånger så lång som höjden. Omkretsen är 64 cm. Hur stor är arean? (cm²)",
+      "answer": ["192"],
+      "explanation": "Sätt höjden = x, basen = 3x. Omkrets: 2x + 2·3x = 64 → 8x = 64 → x = 8. Bas = 24, höjd = 8. Area = 24 · 8 = 192 cm²."
+    },
+    {
+      "question": "I en familj med en mamma och trillingar är medelåldern 14 år. Mamman är fyra gånger äldre än ett av barnen. Hur gamla är barnen?",
+      "answer": ["8"],
+      "explanation": "Sätt barnens ålder = x, mamman = 4x. Medel: (4x + 3x)/4 = 14 → 7x/4 = 14 → 7x = 56 → x = 8 år."
+    },
+    {
+      "question": "En dansgrupp åker iväg: 4 ledare och 12 ungdomar. En ungdomsbiljett kostar hälften så mycket som en ledarbiljett. Totalt kostar biljetterna 40 000 kr. Vad kostar en ungdomsbiljett? (kr)",
+      "answer": ["2000"],
+      "explanation": "Sätt ledarbiljett = x, ungdomsbiljett = x/2. Ekvation: 4x + 12·(x/2) = 40 000 → 4x + 6x = 40 000 → 10x = 40 000 → x = 4 000 kr. Ungdom = 4000/2 = 2 000 kr."
+    },
+    {
+      "question": "En familj med 3 barn och 2 vuxna köper liftkort. Ett vuxenkort kostar 145 kr mer än ett barnkort. Alla fem kort kostar tillsammans 1 340 kr. Vad kostar ett barnkort? (kr)",
+      "answer": ["210"],
+      "explanation": "Sätt barnkort = x, vuxenkort = x + 145. Ekvation: 3x + 2(x + 145) = 1 340 → 5x + 290 = 1 340 → 5x = 1 050 → x = 210 kr."
+    },
+    {
+      "question": "Fyra syskon: två tvillingar är lika gamla, storebror är dubbelt så gammal som en tvilling, och lillebror är 2 år yngre än storebror. Tillsammans är de 40 år. Hur gammal är en tvilling?",
+      "answer": ["7"],
+      "explanation": "Sätt tvilling = x, storebror = 2x, lillebror = 2x − 2. Ekvation: x + x + 2x + (2x − 2) = 40 → 6x − 2 = 40 → 6x = 42 → x = 7 år. Storebror 14, lillebror 12."
+    },
+    {
+      "question": "Palle samlar fotbollskort. Hans album rymmer 16 kort per sida. Han har köpt kort för 624 kr till snittpriset 1,50 kr/styck. Albumet är fyllt till 40 %. Hur många sidor finns i albumet?",
+      "answer": ["65"],
+      "explanation": "Antal kort: 624 / 1,50 = 416 st. Sätt antal sidor = s. Då är 0,40 · 16s = 416 → 6,4s = 416 → s = 65 sidor."
+    },
+    {
+      "question": "Ett klot, en cylinder och en kub väger tillsammans 240 g. Cylindern väger dubbelt så mycket som klotet, och kuben väger lika mycket som klot + cylinder tillsammans. Hur mycket väger kuben? (g)",
+      "answer": ["120"],
+      "explanation": "Sätt klot = k, cylinder = 2k, kub = k + 2k = 3k. Ekvation: k + 2k + 3k = 240 → 6k = 240 → k = 40. Kub = 3 · 40 = 120 g."
+    },
+    {
+      "question": "I en triangel är en vinkel x, en är 25 % av x och den tredje är 55 % av x. Hur stor är x? (grader)",
+      "answer": ["100"],
+      "explanation": "Vinkelsumman 180°: x + 0,25x + 0,55x = 180 → 1,8x = 180 → x = 100°. Vinklarna: 100°, 25°, 55°."
+    },
+    {
+      "question": "Markus är tre gånger så gammal som Frida. Tillsammans är de 28 år. Hur gammal är Frida?",
+      "answer": ["7"],
+      "explanation": "Sätt Frida = x, Markus = 3x. Ekvation: x + 3x = 28 → 4x = 28 → x = 7 år. (Ekvation C: x + x + 3 = 28 är fel — den ger Markus = Frida + 3, inte 3·Frida.)"
+    }
+  ]
+}
