@@ -7,74 +7,9 @@
       "explanation": "25 % = 0,25. Rabatten = 0,25 · x = 0,25x. (Samma sak som x/4.)"
     },
     {
-      "question": "En tröja kostade x kr. Priset sänktes med 25 %. Skriv ett uttryck för det nya priset.",
-      "answer": ["0,75x"],
-      "explanation": "Om 25 % dras av återstår 75 %. Nytt pris = 0,75 · x = 0,75x."
-    },
-    {
-      "question": "Ett par skor kostade x kr. Priset höjdes med 10 %. Skriv ett uttryck för det nya priset.",
-      "answer": ["1,1x"],
-      "explanation": "Höjning med 10 % betyder 100 % + 10 % = 110 % = 1,10. Nytt pris = 1,1 · x = 1,1x."
-    },
-    {
-      "question": "En vara kostade x kr. Priset halverades. Skriv ett uttryck för det nya priset.",
-      "answer": ["x/2"],
-      "explanation": "Halvering betyder dela med 2. Nytt pris = x/2. (Samma som 0,5x.)"
-    },
-    {
-      "question": "Tre på varandra följande heltal har mittersta talet x. Skriv ett förenklat uttryck för deras summa.",
-      "answer": ["3x"],
-      "explanation": "Talen är x − 1, x och x + 1. Summa: (x − 1) + x + (x + 1) = 3x."
-    },
-    {
-      "question": "Tre på varandra följande heltal har det minsta talet x. Skriv ett förenklat uttryck för deras summa.",
-      "answer": ["3x+3"],
-      "explanation": "Talen är x, x + 1 och x + 2. Summa: x + (x + 1) + (x + 2) = 3x + 3."
-    },
-    {
-      "question": "Tre på varandra följande jämna tal har det minsta talet x. Skriv ett förenklat uttryck för deras summa.",
-      "answer": ["3x+6"],
-      "explanation": "Jämna tal kommer 2 åt gången: x, x + 2, x + 4. Summa: x + (x + 2) + (x + 4) = 3x + 6."
-    },
-    {
-      "question": "Albin har x kronor på sitt konto och sätter in 50 kr till. Skriv ett uttryck för hur mycket han har sedan.",
-      "answer": ["x+50"],
-      "explanation": "Plus 50 kr: x + 50."
-    },
-    {
-      "question": "Ett tal som är 4 gånger så stort som x ökas med 12. Skriv ett uttryck för 50 % av det nya talet.",
-      "answer": ["2x+6"],
-      "explanation": "Det nya talet är 4x + 12. 50 % = hälften: (4x + 12) / 2 = 2x + 6."
-    },
-    {
-      "question": "Förenkla uttrycket: 21x/3 + 24y/6 − 5x − 3y",
-      "answer": ["2x+y"],
-      "explanation": "21x/3 = 7x och 24y/6 = 4y. Då blir det 7x + 4y − 5x − 3y = (7x − 5x) + (4y − 3y) = 2x + y."
-    },
-    {
-      "question": "Lös ekvationen: 4(x − 3) = 24",
-      "answer": ["9"],
-      "explanation": "Dividera båda sidor med 4: x − 3 = 6. Addera 3: x = 9."
-    },
-    {
       "question": "Lös ekvationen: 7x + 5 = 3x + 29",
       "answer": ["6"],
       "explanation": "Flytta över: 7x − 3x = 29 − 5 → 4x = 24 → x = 6."
-    },
-    {
-      "question": "Lös ekvationen: 2(x + 5) = 18",
-      "answer": ["4"],
-      "explanation": "Dividera med 2: x + 5 = 9. Subtrahera 5: x = 4."
-    },
-    {
-      "question": "Lös ekvationen: x/3 + x/6 = 9",
-      "answer": ["18"],
-      "explanation": "Gör liknämnigt: x/3 = 2x/6. Då blir 2x/6 + x/6 = 3x/6 = x/2 = 9. Multiplicera med 2: x = 18."
-    },
-    {
-      "question": "Lös ekvationen: 5x − 12 = 2x + 18",
-      "answer": ["10"],
-      "explanation": "Flytta över: 5x − 2x = 18 + 12 → 3x = 30 → x = 10."
     },
     {
       "question": "Talföljden 5, 11, 17, 23, ... Skriv en formel för talet a på plats nummer n.",
@@ -82,9 +17,24 @@
       "explanation": "Differensen är 6 (alltså 6n). För n = 1 ska det bli 5: 6·1 − 1 = 5 ✓. Formel: a = 6n − 1."
     },
     {
-      "question": "Talföljden 5, 11, 17, 23, ... Vilket är talet på plats n = 10?",
-      "answer": ["59"],
-      "explanation": "Formel: a = 6n − 1. För n = 10: 6·10 − 1 = 59."
+      "question": "Tre på varandra följande heltal har mittersta talet x. Skriv ett förenklat uttryck för deras summa.",
+      "answer": ["3x"],
+      "explanation": "Talen är x − 1, x och x + 1. Summa: (x − 1) + x + (x + 1) = 3x."
+    },
+    {
+      "question": "Lös ekvationen: 4(x − 3) = 24",
+      "answer": ["9"],
+      "explanation": "Dividera båda sidor med 4: x − 3 = 6. Addera 3: x = 9."
+    },
+    {
+      "question": "Ett par skor kostade x kr. Priset höjdes med 10 %. Skriv ett uttryck för det nya priset.",
+      "answer": ["1,1x"],
+      "explanation": "Höjning med 10 % betyder 100 % + 10 % = 110 % = 1,10. Nytt pris = 1,1 · x = 1,1x."
+    },
+    {
+      "question": "Förenkla uttrycket: 21x/3 + 24y/6 − 5x − 3y",
+      "answer": ["2x+y"],
+      "explanation": "21x/3 = 7x och 24y/6 = 4y. Då blir det 7x + 4y − 5x − 3y = (7x − 5x) + (4y − 3y) = 2x + y."
     },
     {
       "question": "Talföljden 100, 96, 92, 88, ... Skriv en formel för talet på plats nummer n.",
@@ -92,14 +42,64 @@
       "explanation": "Talföljden minskar med 4 (alltså −4n). Konstanten väljs så att n = 1 ger 100: 104 − 4·1 = 100 ✓. Formel: a = 104 − 4n."
     },
     {
-      "question": "I ett mönster har figur nummer n antalet prickar 4n + 2. Hur många prickar har figur 8?",
-      "answer": ["34"],
-      "explanation": "Sätt in n = 8: 4·8 + 2 = 32 + 2 = 34 prickar."
+      "question": "Lös ekvationen: x/3 + x/6 = 9",
+      "answer": ["18"],
+      "explanation": "Gör liknämnigt: x/3 = 2x/6. Då blir 2x/6 + x/6 = 3x/6 = x/2 = 9. Multiplicera med 2: x = 18."
+    },
+    {
+      "question": "Albin har x kronor på sitt konto och sätter in 50 kr till. Skriv ett uttryck för hur mycket han har sedan.",
+      "answer": ["x+50"],
+      "explanation": "Plus 50 kr: x + 50."
     },
     {
       "question": "Summan av fyra på varandra följande heltal är 50. Vilket är det minsta talet?",
       "answer": ["11"],
       "explanation": "Sätt minsta = x. Talen: x, x + 1, x + 2, x + 3. Summa: 4x + 6 = 50 → 4x = 44 → x = 11. Talen: 11, 12, 13, 14."
+    },
+    {
+      "question": "Lös ekvationen: 3(x + 4) − 2x = 20",
+      "answer": ["8"],
+      "explanation": "Multiplicera in: 3x + 12 − 2x = 20 → x + 12 = 20 → x = 8."
+    },
+    {
+      "question": "I ett mönster har figur nummer n antalet prickar 4n + 2. Hur många prickar har figur 8?",
+      "answer": ["34"],
+      "explanation": "Sätt in n = 8: 4·8 + 2 = 32 + 2 = 34 prickar."
+    },
+    {
+      "question": "En vara kostade x kr. Priset halverades. Skriv ett uttryck för det nya priset.",
+      "answer": ["x/2"],
+      "explanation": "Halvering betyder dela med 2. Nytt pris = x/2. (Samma som 0,5x.)"
+    },
+    {
+      "question": "Lös ekvationen: 5x − 12 = 2x + 18",
+      "answer": ["10"],
+      "explanation": "Flytta över: 5x − 2x = 18 + 12 → 3x = 30 → x = 10."
+    },
+    {
+      "question": "Talföljden 2, 5, 8, 11, ... Skriv en formel för talet på plats nummer n.",
+      "answer": ["3n-1"],
+      "explanation": "Differensen är 3 (alltså 3n). För n = 1 ska det bli 2: 3·1 − 1 = 2 ✓. Formel: a = 3n − 1."
+    },
+    {
+      "question": "Tre på varandra följande heltal har det minsta talet x. Skriv ett förenklat uttryck för deras summa.",
+      "answer": ["3x+3"],
+      "explanation": "Talen är x, x + 1 och x + 2. Summa: x + (x + 1) + (x + 2) = 3x + 3."
+    },
+    {
+      "question": "Lös ekvationen: (x + 8) / 4 = 6",
+      "answer": ["16"],
+      "explanation": "Multiplicera båda sidor med 4: x + 8 = 24. Subtrahera 8: x = 16."
+    },
+    {
+      "question": "Ett tal som är 4 gånger så stort som x ökas med 12. Skriv ett uttryck för 50 % av det nya talet.",
+      "answer": ["2x+6"],
+      "explanation": "Det nya talet är 4x + 12. 50 % = hälften: (4x + 12) / 2 = 2x + 6."
+    },
+    {
+      "question": "Talföljden 5, 11, 17, 23, ... Vilket är talet på plats n = 10?",
+      "answer": ["59"],
+      "explanation": "Formel: a = 6n − 1. För n = 10: 6·10 − 1 = 59."
     }
   ]
 }
