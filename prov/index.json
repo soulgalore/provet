@@ -28,5 +28,11 @@
     "title": "Problemlösning del 2",
     "description": "Fler problem — enklare och svårare",
     "questions": 10
+  },
+  {
+    "file": "hog-hojd.json",
+    "title": "Hög höjd",
+    "description": "Svårare problem: procent, geometri, mönster, blandning",
+    "questions": 20
   }
 ]

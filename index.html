@@ -194,6 +194,7 @@ const app = document.getElementById('app');
 const state = {
   view: 'list',        // 'list' | 'quiz' | 'summary'
   provs: [],           // index entries
+  cheers: ['Rätt!'],   // cheer messages, loaded from cheers.json
   current: null,       // loaded prov
   index: 0,
   answers: [],         // {userAnswer, correct}
@@ -211,6 +212,10 @@ async function loadIndex() {
     state.provs = [];
     state.loadError = err.message;
   }
+  try {
+    const res = await fetch('prov/cheers.json');
+    if (res.ok) state.cheers = await res.json();
+  } catch (_) { /* fallback to default */ }
   render();
 }
 
@@ -266,6 +271,7 @@ function submitAnswer() {
     correct,
     explanation: q.explanation || '',
     expected: Array.isArray(q.answer) ? q.answer[0] : q.answer,
+    cheer: correct ? state.cheers[Math.floor(Math.random() * state.cheers.length)] : null,
   };
   render();
 }
@@ -363,7 +369,7 @@ function renderQuiz() {
 
 function renderFeedback(fb) {
   if (fb.correct) {
-    return `<div class="feedback correct"><strong>Rätt!</strong></div>`;
+    return `<div class="feedback correct"><strong>${escapeHtml(fb.cheer || 'Rätt!')}</strong></div>`;
   }
   return `
     <div class="feedback wrong">
